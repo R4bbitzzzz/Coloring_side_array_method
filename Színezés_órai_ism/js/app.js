@@ -1,5 +1,5 @@
 // alert("asdfa")
-
+//Számokat tartalmazó négyzetek létrehozása.
 const makeBoxes = () => {
     let boxList = [];
     for (let i = 1; i < 16; i++) {
@@ -14,4 +14,5 @@ const renderBoxes = () => {
     boxesContainer.innerHTML = makeBoxes().join('');
 };
 
+//Oldal betöltésekor inicializálodik a weboldal.
 document.addEventListener("DOMContentLoaded", renderBoxes);
