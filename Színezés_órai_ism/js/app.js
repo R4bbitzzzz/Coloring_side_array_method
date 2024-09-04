@@ -47,7 +47,7 @@ const renderBoxes = () => {
 
 document.addEventListener("DOMContentLoaded", () =>{
     renderBoxes();
-    const boxes = document.querySelectorAll(".box") 
-    console.log(`boxLists3`,boxes); //log
+    //const boxes = document.querySelectorAll(".box") 
+    //console.log(`boxLists3`,boxes); //log
 });
 
