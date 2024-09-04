@@ -24,9 +24,9 @@ const makeBoxes = () =>{
         {number: 12},
         {number: 13},
         {number: 14},
-        {number: 15},
-        
-    ]
+        {number: 15},   
+    ];
+    const content = data.map()
 }
 
 //Négyzetek megjelenítése HTML-ben
