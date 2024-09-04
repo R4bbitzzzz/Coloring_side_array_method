@@ -16,3 +16,5 @@ const renderBoxes = () => {
 
 //Oldal betöltésekor inicializálodik a weboldal.
 document.addEventListener("DOMContentLoaded", renderBoxes);
+const boxes = document.querySelectorAll(".box")
+console.log(boxes);
