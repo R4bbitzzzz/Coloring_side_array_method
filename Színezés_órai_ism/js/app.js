@@ -64,7 +64,23 @@ const randomColor = () =>{
 const coloring = () =>{
     const button = document.querySelector("#szinez")
     button.addEventListener("click",randomColor);
-    const
+    const [isValid, number] = checkValue();
+    if(!isValid) {
+        sendErrorMessage();
+    }
+}
+const createRGBColor = () =>{
+    const r = randomNumber();
+    const g = randomNumber();
+    const b = randomNumber();
+    return [r, g, b];
+}
+
+const coloringBox = () =>{
+    const boxes = document.querySelectorAll(".box");
+};
+function sendErrorMessage(){
+    alert("Helytelen értéket adtál meg!")
 }
 
 //A négyzetek megjelenítése a HTML-ben
