@@ -31,7 +31,7 @@ const makeBoxes = () =>{
     return content
 }
 
-const getInputValue = function(){
+const getInputValue = () =>{
     return document.querySelector("#num").value;
 }
 
@@ -61,45 +61,43 @@ const randomColor = () =>{
     return [r,g,b]
 }
 
-const coloring = () =>{
-    const button = document.querySelector(".card button:nth-child(3)")
-    
-    button.addEventListener("click",coloringBox);
-    const [isValid, number] = checkValue();
-    if(!isValid) {
-        sendErrorMessage();
-        return;
-    }
-    const boxes = document.querySelectorAll(".box");
-    const box = Array.from(boxes).find((b => Number(b.id) === number));
-    const [r, g, b] = createRGBColor();
-    box.style.backgroundColor = `rgb(${r}, ${g}), ${b})`;
-}
-const createRGBColor = () =>{
-    const r = randomNumber();
-    const g = randomNumber();
-    const b = randomNumber();
-    return [r, g, b];
+function sendErrorMessage(){
+    alert("Helytelen értéket adott meg!")
 }
 
 const coloringBox = () =>{
-    const boxes = document.querySelectorAll(".box");
-};
-function sendErrorMessage(){
-    alert("Helytelen értéket adtál meg!")
+    const [isValid, number] = checkValue();
+    if(!isValid){
+        sendErrorMessage();
+        return;
+    }
+    const boxes = document.querySelectorAll(".box")
+   
+    const box = Array.from(boxes).find(b => Number(b.id) === number);
+    const [r,g,b] = randomColor();
+    box.style.backgroundColor = `rgb(${r},${g},${b})`;
 }
 
-function clearInput() {
-    const inputElement = document.querySelector("#num");
-    inputElement.textContent = "";
-    inputElement.focus();
+function clearInput(){
+    const inputElement = document.querySelector("#num")
+    inputElement.value = "";
+    inputElement.focus()
 }
 
-const reset = () => {
-    const resetButton =  document.querySelector(".card button:nth-child(4)")
-    resetButton.addEventListener("click", () =>{
+const coloring = () =>{
+    const button = document.querySelector("#szinez")
+    button.addEventListener("click",()=>{
+        coloringBox();
+        clearInput();
+    });
+   
+}
+
+const reset = ()=>{
+    const torol = document.querySelector("#torol")
+    torol.addEventListener("click",()=>{
         renderBoxes();
-        
+        clearInput();
     })
 }
 
@@ -122,6 +120,5 @@ document.addEventListener("DOMContentLoaded", () =>{
     renderBoxes();
     coloring();
     reset();
-    const boxes = document.querySelector(".box");
-    
+   
 });
