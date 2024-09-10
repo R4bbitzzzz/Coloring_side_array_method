@@ -62,12 +62,18 @@ const randomColor = () =>{
 }
 
 const coloring = () =>{
-    const button = document.querySelector("#szinez")
-    button.addEventListener("click",randomColor);
+    const button = document.querySelector(".card button:nth-child(3)")
+    
+    button.addEventListener("click",coloringBox);
     const [isValid, number] = checkValue();
     if(!isValid) {
         sendErrorMessage();
+        return;
     }
+    const boxes = document.querySelectorAll(".box");
+    const box = Array.from(boxes).find((b => Number(b.id) === number));
+    const [r, g, b] = createRGBColor();
+    box.style.backgroundColor = `rgb(${r}, ${g}), ${b})`;
 }
 const createRGBColor = () =>{
     const r = randomNumber();
@@ -81,6 +87,12 @@ const coloringBox = () =>{
 };
 function sendErrorMessage(){
     alert("Helytelen értéket adtál meg!")
+}
+
+function clearInput() {
+    const inputElement = document.querySelector("#num");
+    inputElement.textContent = "";
+    inputElement.focus();
 }
 
 //A négyzetek megjelenítése a HTML-ben
@@ -100,6 +112,7 @@ const renderBoxes = () => {
 
 document.addEventListener("DOMContentLoaded", () =>{
     renderBoxes();
+    coloring();
     const boxes = document.querySelector(".box");
     
 });
