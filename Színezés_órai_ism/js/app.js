@@ -31,7 +31,7 @@ const makeBoxes = () =>{
     return content
 }
 
-const getInputValue = () =>{
+const getInputValue = function(){
     return document.querySelector("#num").value;
 }
 
@@ -91,8 +91,16 @@ function sendErrorMessage(){
 
 function clearInput() {
     const inputElement = document.querySelector("#num");
-    inputElement.textContent = none;
+    inputElement.textContent = "";
     inputElement.focus();
+}
+
+const reset = () => {
+    const resetButton =  document.querySelector(".card button:nth-child(4)")
+    resetButton.addEventListener("click", () =>{
+        renderBoxes();
+        
+    })
 }
 
 //A négyzetek megjelenítése a HTML-ben
@@ -113,6 +121,7 @@ const renderBoxes = () => {
 document.addEventListener("DOMContentLoaded", () =>{
     renderBoxes();
     coloring();
+    reset();
     const boxes = document.querySelector(".box");
     
 });
