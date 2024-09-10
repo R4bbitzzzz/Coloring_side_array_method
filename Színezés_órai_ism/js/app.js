@@ -91,7 +91,7 @@ function sendErrorMessage(){
 
 function clearInput() {
     const inputElement = document.querySelector("#num");
-    inputElement.textContent = "";
+    inputElement.textContent = none;
     inputElement.focus();
 }
 
