@@ -80,21 +80,27 @@ const coloringBox = () =>{
 
 function clearInput(){
     const inputElement = document.querySelector("#num")
-    inputElement.value = "";
+    inputElement.textContent = "";
     inputElement.focus()
 }
 
 const coloring = () =>{
-    const button = document.querySelector("#szinez")
-    button.addEventListener("click",()=>{
-        coloringBox();
-        clearInput();
-    });
-   
+    const button = document.querySelector(".card button:nth-child(3)")
+    
+    button.addEventListener("click",coloringBox);
+    const [isValid, number] = checkValue();
+    if(!isValid) {
+        sendErrorMessage();
+        return;
+    }
+    const boxes = document.querySelectorAll(".box");
+    const box = Array.from(boxes).find((b => Number(b.id) === number));
+    const [r, g, b] = createRGBColor();
+    box.style.backgroundColor = `rgb(${r}, ${g}), ${b})`;
 }
 
 const reset = ()=>{
-    const torol = document.querySelector("#torol")
+    const torol = document.querySelector(".card button:nth-child(4)")
     torol.addEventListener("click",()=>{
         renderBoxes();
         clearInput();
